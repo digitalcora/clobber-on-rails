@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  username: MyString
+  pass_hash: MyString
+  salt: MyString
+
+two:
+  username: MyString
+  pass_hash: MyString
+  salt: MyString
