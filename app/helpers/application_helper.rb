@@ -1,11 +1,14 @@
 module ApplicationHelper
 
+  def base_title
+    'Clobber on Rails'
+  end
+
   def title
-    base_title = 'Clobber on Rails'
     if @title.nil?
-      base_title
+      raw base_title
     else
-      "#{base_title} | #{@title}"
+      raw "#{base_title} &raquo; #{@title}"
     end
   end
 
