@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
     if signed_in?
-      # Do signed in stuff here... Game.new?
+      @messages = Message.where(:game_id => nil, :created_at => (Time.now - 1.day)..Time.now)
     end
   end
 end
