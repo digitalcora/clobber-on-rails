@@ -1,8 +1,6 @@
 <% if object.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(object.errors.count, "error") %> 
-        prevented this <%= object.class.to_s.underscore.humanize.downcase %> 
-        from being saved</h2>
+    <h2>Submission failed!</h2>
     <ul>
     <% object.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
