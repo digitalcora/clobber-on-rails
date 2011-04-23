@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  turn_up: false
+  turn_order: 1
+  won_game: false
+
+two:
+  turn_up: false
+  turn_order: 1
+  won_game: false

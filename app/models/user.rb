@@ -4,6 +4,11 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :username, :password, :password_confirmation
   
+  has_many :messages
+  has_many :players
+  has_many :games, :through => :players
+  has_many :pieces, :through => :players
+  
   validates :username, :presence => true,
                        :uniqueness => { :case_sensitive => false },
                        :length => { :maximum => 16 }

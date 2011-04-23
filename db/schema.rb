@@ -10,7 +10,51 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110420212213) do
+ActiveRecord::Schema.define(:version => 20110422225055) do
+
+  create_table "games", :force => true do |t|
+    t.integer  "turns"
+    t.boolean  "complete"
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.string   "content"
+    t.datetime "created_at"
+  end
+
+  add_index "messages", ["created_at"], :name => "index_messages_on_created_at"
+  add_index "messages", ["game_id"], :name => "index_messages_on_game_id"
+  add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
+
+  create_table "pieces", :force => true do |t|
+    t.integer  "player_id"
+    t.integer  "x"
+    t.integer  "y"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pieces", ["player_id"], :name => "index_pieces_on_player_id"
+
+  create_table "players", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.boolean  "turn_up"
+    t.integer  "turn_order"
+    t.boolean  "won_game"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "players", ["game_id"], :name => "index_players_on_game_id"
+  add_index "players", ["user_id", "game_id"], :name => "index_players_on_user_id_and_game_id", :unique => true
+  add_index "players", ["user_id"], :name => "index_players_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "username"
