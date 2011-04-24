@@ -13,11 +13,50 @@ header h1 {
 }
 
 footer {
+  width: 80%;
   text-align: center;
-  margin-top: 10px;
-  width: 710px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 30px auto 0 auto;
+  padding-top: 5px;
+  border-top: 1px solid #ccc;
+}
+
+.flash {
+  border-radius: 5px;
+}
+
+/* Buttons */
+
+a.button, nav ul li a {
+  font-weight: bold;
+  text-decoration: none;
+  padding: 2px 4px;
+  border-radius: 5px;
+}
+
+nav ul li a {
+  margin: 0 4px;
+  border: 1px solid #ee3;
+}
+
+a.button.inverse {
+  color: white;
+  border: none;
+}
+
+a.button.inverse:hover {
+  opacity: 0.75;
+}
+
+a.button.inverse.green {
+  background-color: #3a3;
+}
+
+a.button.inverse.blue {
+  background-color: #36e;
+}
+
+a.button.inverse.red {
+  background-color: #c33;
 }
 
 /* Navigation */
@@ -26,6 +65,7 @@ nav {
   float: right;
   padding: 0 0.7em;
   white-space: nowrap;
+  line-height: 4em;
 }
 
 nav ul {
@@ -36,16 +76,6 @@ nav ul {
 nav ul li {
   list-style-type: none;
   display: inline-block;
-  padding: 0.2em 0;
-}
-
-nav ul li a {
-  padding: 0 5px;
-  font-weight: bold;
-}
-
-nav ul li a:hover {
-  text-decoration: underline;
 }
 
 /* Forms */
@@ -85,7 +115,5 @@ div.field, div.actions {
 /* Round corners */
 
 .round {
-  -moz-border-radius:    10px;
-  -webkit-border-radius: 10px;
-  border-radius:         10px;
+  border-radius:         8px;
 }
