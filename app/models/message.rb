@@ -12,6 +12,4 @@ class Message < ActiveRecord::Base
       errors.add(:game_id, 'must be nil or a valid game')
     end
   end
-  
-  
 end

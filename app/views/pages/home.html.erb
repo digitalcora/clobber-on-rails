@@ -1,5 +1,17 @@
 <% if signed_in? %>
-  <%= render @messages %>
+  <div id="message_pane">
+    <div id="messages">
+	  <%= render @messages %>
+    </div>
+    <%= form_for @message do |f| %>
+      <div class="field">
+        <%= f.text_field :content, :maxlength => 250, :size => nil %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Send' %>
+      </div>
+    <% end %>
+  </div>
 <% else %>
   <p>Welcome! You are not signed in. To play,
   <%= link_to 'Sign In', signin_path, :class => 'inverse button blue' %>

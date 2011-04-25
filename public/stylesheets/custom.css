@@ -24,6 +24,29 @@ footer {
   border-radius: 5px;
 }
 
+/* Message display */
+
+#message_pane {
+  margin: 0 4px;
+  padding: 6px;
+  border: 1px solid #ee3;
+  border-radius: 5px;
+}
+
+#messages {
+  height: 400px;
+  overflow-y: scroll;
+  word-wrap: break-word;
+}
+
+.message .timestamp {
+  color: #ccc;
+}
+
+.message .author {
+  font-weight: bold;
+}
+
 /* Buttons */
 
 a.button, nav ul li a {
@@ -82,6 +105,24 @@ nav ul li {
 
 div.field, div.actions {
   margin-bottom: 10px;
+}
+
+form.new_message {
+  display: table;
+  width: 100%;
+}
+
+form.new_message .field,
+form.new_message .actions {
+  display: table-cell;
+}
+
+form.new_message .field {
+  width: 100%;
+}
+
+form.new_message .field input {
+  width: 99%;
 }
 
 #error_explanation {
