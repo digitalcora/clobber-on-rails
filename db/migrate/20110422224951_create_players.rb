@@ -3,6 +3,7 @@ class CreatePlayers < ActiveRecord::Migration
     create_table :players do |t|
       t.integer :user_id
       t.integer :game_id
+      t.boolean :active
       t.boolean :turn_up
       t.integer :turn_order
       t.boolean :won_game

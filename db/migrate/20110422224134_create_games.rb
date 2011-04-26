@@ -2,7 +2,7 @@ class CreateGames < ActiveRecord::Migration
   def self.up
     create_table :games do |t|
       t.integer :turns
-      t.boolean :complete
+      t.boolean :active
       t.integer :width
       t.integer :height
 

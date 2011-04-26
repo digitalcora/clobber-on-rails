@@ -7,7 +7,14 @@ class User < ActiveRecord::Base
   has_many :messages
   has_many :players
   has_many :games, :through => :players
-  has_many :pieces, :through => :players
+  has_one :active_player,
+    :class_name => 'Player', :conditions => ['active = ?', true]
+  has_one :active_game,
+    :through => :players, :source => :game, :conditions => ['games.active = ?', true]
+  has_many :past_players,
+    :class_name => 'Player', :conditions => ['active = ?', false]
+  has_many :past_games,
+    :through => :players, :source => :game, :conditions => ['games.active = ?', false]
   
   validates :username, :presence => true,
                        :uniqueness => { :case_sensitive => false },

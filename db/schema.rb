@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(:version => 20110422225055) do
 
   create_table "games", :force => true do |t|
     t.integer  "turns"
-    t.boolean  "complete"
+    t.boolean  "active"
     t.integer  "width"
     t.integer  "height"
     t.datetime "created_at"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20110422225055) do
   create_table "players", :force => true do |t|
     t.integer  "user_id"
     t.integer  "game_id"
+    t.boolean  "active"
     t.boolean  "turn_up"
     t.integer  "turn_order"
     t.boolean  "won_game"
