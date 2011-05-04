@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :username, :password, :password_confirmation
   
+  has_one :challenge
   has_many :messages
   has_many :players
   has_many :games, :through => :players
