@@ -24,19 +24,44 @@ footer {
   border-radius: 5px;
 }
 
-/* Message display */
+/* Panes */
 
-#message_pane {
-  margin: 0 4px;
-  padding: 6px;
+.pane {
+  padding: 5px;
+  margin-bottom: 8px;
   border: 1px solid #ee3;
   border-radius: 5px;
 }
 
-#messages {
-  height: 400px;
+.scroll {
   overflow-y: scroll;
   word-wrap: break-word;
+}
+
+#lobby {
+  width: 500px;
+}
+
+#sidebar {
+  width: 190px;
+  float: right;
+}
+
+#sidebar h2 {
+  color: #999;
+  font-size: 1.5em;
+  line-height: 1;
+  font-weight: bold;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 8px;
+}
+
+#messages {
+  height: 450px;
+}
+
+#users {
+  height: 250px;
 }
 
 .message .timestamp {
@@ -44,6 +69,10 @@ footer {
 }
 
 .message .author {
+  font-weight: bold;
+}
+
+.user .username {
   font-weight: bold;
 }
 
