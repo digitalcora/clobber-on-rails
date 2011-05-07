@@ -1,7 +1,8 @@
 Clobber::Application.routes.draw do
   resources :users
-  resources :sessions, :only => [:new, :create, :destroy]
-  resources :messages, :only => [:new, :create]
+  resources :sessions,   :only => [:new, :create, :destroy]
+  resources :messages,   :only => [:create]
+  resources :challenges, :only => [:create, :destroy]
   
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'

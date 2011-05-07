@@ -1,23 +1,19 @@
 <% if signed_in? %>
   <div id="sidebar">
-    <div class="pane">
-	  <h2>Users Online</h2>
-	  <div id="users" class="scroll">
-	    <%= render @users %>
-	  </div>
-	</div>
-	<div class="pane">
-	  <h2>Sent Challenge</h2>
-	  <p>Waiting for user to respond to your challenge...</p>
-	</div>
-	<div class="pane">
-	  <h2>Incoming Challenge</h2>
-	  <p>User has challenged you! Do you accept or decline?</p>
-	</div>
+    <div id="users_pane" class="pane">
+      <h2>Users Online</h2>
+      <div id="users" class="scroll">
+        <%= render @users %>
+      </div>
+    </div>
+  <%= render :partial => 'challenges/sent',
+             :object => @sent_challenge if @sent_challenge %>
+  <%= render :partial => 'challenges/incoming',
+             :object => @incoming_challenge if @incoming_challenge %>
   </div>
   <div id="lobby" class="pane">
     <div id="messages" class="scroll">
-	  <%= render @messages %>
+      <%= render @messages %>
     </div>
     <%= form_for @message do |f| %>
       <div class="field">

@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   attr_accessible :username, :password, :password_confirmation
   
   has_one :challenge
+  has_one :incoming_challenge,
+    :class_name => 'Challenge', :foreign_key => 'target_id'
   has_many :messages
   has_many :players
   has_many :games, :through => :players
