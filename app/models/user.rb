@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   
   has_one :challenge
   has_one :incoming_challenge,
-    :class_name => 'Challenge', :foreign_key => 'target_id'
+    :class_name => 'Challenge', :foreign_key => 'target_user_id'
   has_many :messages
   has_many :players
   has_many :games, :through => :players

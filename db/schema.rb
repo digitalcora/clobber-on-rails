@@ -14,12 +14,12 @@ ActiveRecord::Schema.define(:version => 20110428204644) do
 
   create_table "challenges", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "target_id"
+    t.integer  "target_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "challenges", ["target_id"], :name => "index_challenges_on_target_id"
+  add_index "challenges", ["target_user_id"], :name => "index_challenges_on_target_user_id"
   add_index "challenges", ["user_id"], :name => "index_challenges_on_user_id"
 
   create_table "games", :force => true do |t|

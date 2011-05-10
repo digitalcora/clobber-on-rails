@@ -1,3 +1,8 @@
 <div class="user">
-  <span class="username"><%= user.username %></span>
+  <% if current_user?(user) %>
+    <span class="username"><%= user.username %></span>
+  <% else %>
+    <span class="username"><%= link_to user.username,
+      challenges_path(:challenge => {:target_user_id => user.id}), :method => :post %></span>
+  <% end %>
 </div>
