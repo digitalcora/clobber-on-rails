@@ -11,5 +11,13 @@ module ApplicationHelper
       raw "#{base_title} &raquo; #{@title}"
     end
   end
+  
+  def active_game
+    current_user.active_game
+  end
+  
+  def active_game?
+    !current_user.active_game.nil?
+  end
 
 end

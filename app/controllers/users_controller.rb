@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_filter :authenticate, :except => [:show, :new, :create]
   before_filter :correct_user, :only => [:edit, :update]
   #before_filter :admin_user, :only => :destroy
+  before_filter :active_game_redirect, :except => [:new, :create]
   
   def index
     @title = "User List"

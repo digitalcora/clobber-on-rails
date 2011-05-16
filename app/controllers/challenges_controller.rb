@@ -1,5 +1,6 @@
 class ChallengesController < ApplicationController
   before_filter :authenticate
+  before_filter :active_game_redirect
 
   def create
     @challenge = current_user.build_challenge(params[:challenge])

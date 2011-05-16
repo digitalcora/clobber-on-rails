@@ -1,14 +1,22 @@
 <header>
   <nav>
     <ul>
-      <li><%= link_to 'Home', root_path %></li>
-      <% if signed_in? %>
-    <li><%= link_to 'Account', edit_user_path(current_user) %></li>
+      <% if !signed_in? or (signed_in? and !active_game?) %>
+        <li><%= link_to 'Home', root_path %></li>
+      <% end %>
+      <% if signed_in? and !active_game? %>
+        <li><%= link_to 'Account', edit_user_path(current_user) %></li>
       <% end %>
       <% if signed_in? %>
-      <li><%= link_to 'Sign Out', signout_path, :method => :delete, :class => 'inverse button red' %></li>
+        <% if active_game? %>
+          <li><%= link_to 'Abandon Game', active_game,
+            :confirm => 'Really abandon this game?', :class => 'inverse button red' %>
+        <% else %>
+          <li><%= link_to 'Sign Out', signout_path,
+            :method => :delete, :class => 'inverse button red' %></li>
+        <% end %>
       <% else %>
-      <li><%= link_to 'Sign In', signin_path, :class => 'inverse button blue' %></li>
+        <li><%= link_to 'Sign In', signin_path, :class => 'inverse button blue' %></li>
       <% end %>
     </ul>
   </nav>

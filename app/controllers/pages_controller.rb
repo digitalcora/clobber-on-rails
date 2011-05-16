@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  before_filter :active_game_redirect
+
   def home
     if signed_in?
       @title = 'Game Lobby'
