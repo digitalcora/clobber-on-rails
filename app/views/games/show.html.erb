@@ -1,3 +1,10 @@
+<div id="sidebar">
+  <div id="chat_pane" class="pane">
+    <h2>Chat</h2>
+    <%= render 'shared/chat_interface' %>
+  </div>
+</div>
+
 <div id="board" class="pane">
   <svg width="<%= TILE_SIZE * @game.width %>" height="<%= TILE_SIZE * @game.height %>">
     <%= render 'defs' %>

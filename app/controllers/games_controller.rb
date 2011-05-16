@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   before_filter :authenticate
   before_filter :find_records, :except => :create
+  before_filter :setup_show, :only => [:show, :edit]
 
   def show
     # Nothing special
@@ -30,5 +31,13 @@ class GamesController < ApplicationController
         # We came from a Game route (show)
         @game = Game.find(params[:id])
       end
+    end
+    
+    def setup_show
+      @title = 'Game versus ' +
+        @game.players.reject{ |p| p == current_user.active_player}.
+          map{ |p| p.user.username }.join(', ')
+      @message = Message.new
+      @messages = @game.messages
     end
 end

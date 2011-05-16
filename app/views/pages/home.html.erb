@@ -12,17 +12,7 @@
              :object => @incoming_challenge if @incoming_challenge %>
   </div>
   <div id="lobby" class="pane">
-    <div id="messages" class="scroll">
-      <%= render @messages %>
-    </div>
-    <%= form_for @message do |f| %>
-      <div class="field">
-        <%= f.text_field :content, :maxlength => 250, :size => nil %>
-      </div>
-      <div class="actions">
-        <%= f.submit 'Send' %>
-      </div>
-    <% end %>
+    <%= render 'shared/chat_interface' %>
   </div>
 <% else %>
   <p>Welcome! You are not signed in. To play,

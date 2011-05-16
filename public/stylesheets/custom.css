@@ -38,7 +38,7 @@ footer {
   word-wrap: break-word;
 }
 
-#lobby {
+#lobby, #board {
   width: 500px;
 }
 
@@ -56,8 +56,12 @@ footer {
   margin-bottom: 8px;
 }
 
-#messages {
+#lobby #messages {
   height: 450px;
+}
+
+#sidebar #messages {
+  height: 250px;
 }
 
 #users {
@@ -150,8 +154,12 @@ form.new_message .field {
   width: 100%;
 }
 
-form.new_message .field input {
+#lobby form.new_message .field input {
   width: 99%;
+}
+
+#sidebar form.new_message .field input {
+  width: 95%;
 }
 
 #error_explanation {
