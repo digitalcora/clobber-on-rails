@@ -1,76 +1,21 @@
-<% tile_size = 100.0 %>
-
 <div id="board" class="pane">
-  <svg width="<%= tile_size * @game.width %>" height="<%= tile_size * @game.height %>">
-    <defs>
-      <linearGradient x1="10%" x2="40%" y1="0%" y2="100%" id="blackShading">
-        <stop offset="0%" stop-color="#aaa" />
-        <stop offset="100%" stop-color="#111" />
-      </linearGradient>
-      <linearGradient x1="10%" x2="40%" y1="0%" y2="100%" id="whiteShading">
-        <stop offset="0%" stop-color="#fff" />
-        <stop offset="100%" stop-color="#ccc" />
-      </linearGradient>
-      <linearGradient x1="10%" x2="90%" y1="40%" y2="60%" id="redPieceShading">
-        <stop offset="0%" stop-color="red" />
-        <stop offset="100%" stop-color="#a11" />
-      </linearGradient>
-      <linearGradient x1="10%" x2="90%" y1="40%" y2="60%" id="bluePieceShading">
-        <stop offset="0%" stop-color="blue" />
-        <stop offset="100%" stop-color="#119" />
-      </linearGradient>
-      <symbol id="blackSquare">
-        <rect width="<%= tile_size %>" height="<%= tile_size %>" fill="url(#blackShading)" />
-      </symbol>
-      <symbol id="whiteSquare">
-        <rect width="<%= tile_size %>" height="<%= tile_size %>" fill="url(#whiteShading)" />
-      </symbol>
-      <symbol id="redPiece">
-        <ellipse cx="<%= tile_size / 2 %>" cy="<%= tile_size * 9 / 16 %>"
-          rx="<%= tile_size * 3 / 8 %>" ry="<%= tile_size / 4 %>"
-          fill="url(#redPieceShading)" stroke="black" stroke-width="2" />
-        <rect x="<%= tile_size / 8 %>" y="<%= tile_size / 2 %>"
-          width="<%= tile_size * 3 / 4 %>" height="<%= tile_size / 16 %>"
-          fill="url(#redPieceShading)" />
-        <ellipse cx="<%= tile_size / 2 %>" cy="<%= tile_size * 7 / 16 %>"
-          rx="<%= tile_size * 3 / 8 %>" ry="<%= tile_size / 4 %>"
-          fill="red" stroke="black" stroke-width="2" />
-        <line x1="<%= tile_size / 8 %>" y1="<%= tile_size * 7 / 16 %>"
-          x2="<%= tile_size / 8 %>" y2="<%= tile_size * 9 / 16 %>"
-          stroke="black" stroke-width="2" />
-        <line x1="<%= tile_size * 7 / 8 %>" y1="<%= tile_size * 7 / 16 %>"
-          x2="<%= tile_size * 7 / 8 %>" y2="<%= tile_size * 9 / 16 %>"
-          stroke="black" stroke-width="2" />
-      </symbol>
-      <symbol id="bluePiece">
-        <ellipse cx="<%= tile_size / 2 %>" cy="<%= tile_size * 9 / 16 %>"
-          rx="<%= tile_size * 3 / 8 %>" ry="<%= tile_size / 4 %>"
-          fill="url(#bluePieceShading)" stroke="black" stroke-width="2" />
-        <rect x="<%= tile_size / 8 %>" y="<%= tile_size / 2 %>"
-          width="<%= tile_size * 3 / 4 %>" height="<%= tile_size / 16 %>"
-          fill="url(#bluePieceShading)" />
-        <ellipse cx="<%= tile_size / 2 %>" cy="<%= tile_size * 7 / 16 %>"
-          rx="<%= tile_size * 3 / 8 %>" ry="<%= tile_size / 4 %>"
-          fill="blue" stroke="black" stroke-width="2" />
-        <line x1="<%= tile_size / 8 %>" y1="<%= tile_size * 7 / 16 %>"
-          x2="<%= tile_size / 8 %>" y2="<%= tile_size * 9 / 16 %>"
-          stroke="black" stroke-width="2" />
-        <line x1="<%= tile_size * 7 / 8 %>" y1="<%= tile_size * 7 / 16 %>"
-          x2="<%= tile_size * 7 / 8 %>" y2="<%= tile_size * 9 / 16 %>"
-          stroke="black" stroke-width="2" />
-      </symbol>
-    </defs>
+  <svg width="<%= TILE_SIZE * @game.width %>" height="<%= TILE_SIZE * @game.height %>">
+    <%= render 'defs' %>
     
     <% @game.height.times do |row|
       @game.width.times do |col| %>
-        <use x="<%= col * tile_size %>" y="<%= row * tile_size %>"
+        <use x="<%= col * TILE_SIZE %>" y="<%= row * TILE_SIZE %>"
           xlink:href="#<%= (row + col) % 2 == 0 ? 'blackSquare' : 'whiteSquare' %>" />
       <% end
     end %>
     
     <% @game.pieces.each do |piece| %>
-      <use x="<%= piece.x * tile_size %>" y="<%= piece.y * tile_size %>"
-        xlink:href="#<%= piece.player.turn_order == 1 ? 'redPiece' : 'bluePiece' %>" />
+      <% if piece.player.user == current_user %>
+        <a xlink:href="<%= edit_game_piece_path(@game, piece) %>">
+      <% end %>
+        <use x="<%= piece.x * TILE_SIZE %>" y="<%= piece.y * TILE_SIZE %>"
+          xlink:href="#<%= piece.player.turn_order == 1 ? 'redPiece' : 'bluePiece' %>" />
+      <% if piece.player.user == current_user %></a><% end %>
     <% end %>
   </svg>
 </div>

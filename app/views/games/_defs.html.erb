@@ -1,0 +1,58 @@
+<defs>
+  <linearGradient x1="10%" x2="40%" y1="0%" y2="100%" id="blackShading">
+    <stop offset="0%" stop-color="#aaa" />
+    <stop offset="100%" stop-color="#111" />
+  </linearGradient>
+  <linearGradient x1="10%" x2="40%" y1="0%" y2="100%" id="whiteShading">
+    <stop offset="0%" stop-color="#fff" />
+    <stop offset="100%" stop-color="#ccc" />
+  </linearGradient>
+  <linearGradient x1="10%" x2="90%" y1="40%" y2="60%" id="redPieceShading">
+    <stop offset="0%" stop-color="red" />
+    <stop offset="100%" stop-color="#a11" />
+  </linearGradient>
+  <linearGradient x1="10%" x2="90%" y1="40%" y2="60%" id="bluePieceShading">
+    <stop offset="0%" stop-color="blue" />
+    <stop offset="100%" stop-color="#119" />
+  </linearGradient>
+  <symbol id="blackSquare">
+    <rect width="<%= TILE_SIZE %>" height="<%= TILE_SIZE %>" fill="url(#blackShading)" />
+  </symbol>
+  <symbol id="whiteSquare">
+    <rect width="<%= TILE_SIZE %>" height="<%= TILE_SIZE %>" fill="url(#whiteShading)" />
+  </symbol>
+  <symbol id="redPiece">
+    <ellipse cx="<%= TILE_SIZE / 2 %>" cy="<%= TILE_SIZE * 9 / 16 %>"
+      rx="<%= TILE_SIZE * 3 / 8 %>" ry="<%= TILE_SIZE / 4 %>"
+      fill="url(#redPieceShading)" stroke="black" stroke-width="2" />
+    <rect x="<%= TILE_SIZE / 8 %>" y="<%= TILE_SIZE / 2 %>"
+      width="<%= TILE_SIZE * 3 / 4 %>" height="<%= TILE_SIZE / 16 %>"
+      fill="url(#redPieceShading)" />
+    <ellipse cx="<%= TILE_SIZE / 2 %>" cy="<%= TILE_SIZE * 7 / 16 %>"
+      rx="<%= TILE_SIZE * 3 / 8 %>" ry="<%= TILE_SIZE / 4 %>"
+      fill="red" stroke="black" stroke-width="2" />
+    <line x1="<%= TILE_SIZE / 8 %>" y1="<%= TILE_SIZE * 7 / 16 %>"
+      x2="<%= TILE_SIZE / 8 %>" y2="<%= TILE_SIZE * 9 / 16 %>"
+      stroke="black" stroke-width="2" />
+    <line x1="<%= TILE_SIZE * 7 / 8 %>" y1="<%= TILE_SIZE * 7 / 16 %>"
+      x2="<%= TILE_SIZE * 7 / 8 %>" y2="<%= TILE_SIZE * 9 / 16 %>"
+      stroke="black" stroke-width="2" />
+  </symbol>
+  <symbol id="bluePiece">
+    <ellipse cx="<%= TILE_SIZE / 2 %>" cy="<%= TILE_SIZE * 9 / 16 %>"
+      rx="<%= TILE_SIZE * 3 / 8 %>" ry="<%= TILE_SIZE / 4 %>"
+      fill="url(#bluePieceShading)" stroke="black" stroke-width="2" />
+    <rect x="<%= TILE_SIZE / 8 %>" y="<%= TILE_SIZE / 2 %>"
+      width="<%= TILE_SIZE * 3 / 4 %>" height="<%= TILE_SIZE / 16 %>"
+      fill="url(#bluePieceShading)" />
+    <ellipse cx="<%= TILE_SIZE / 2 %>" cy="<%= TILE_SIZE * 7 / 16 %>"
+      rx="<%= TILE_SIZE * 3 / 8 %>" ry="<%= TILE_SIZE / 4 %>"
+      fill="blue" stroke="black" stroke-width="2" />
+    <line x1="<%= TILE_SIZE / 8 %>" y1="<%= TILE_SIZE * 7 / 16 %>"
+      x2="<%= TILE_SIZE / 8 %>" y2="<%= TILE_SIZE * 9 / 16 %>"
+      stroke="black" stroke-width="2" />
+    <line x1="<%= TILE_SIZE * 7 / 8 %>" y1="<%= TILE_SIZE * 7 / 16 %>"
+      x2="<%= TILE_SIZE * 7 / 8 %>" y2="<%= TILE_SIZE * 9 / 16 %>"
+      stroke="black" stroke-width="2" />
+  </symbol>
+</defs>
