@@ -2,7 +2,9 @@
   <h2>Incoming Challenge</h2>
   <p><%= incoming.user.username %> has challenged you!</p>
   <p>
-    <%= link_to 'Accept', incoming, :method => :delete, :class => 'inverse button green' %>
-    <%= link_to 'Decline', incoming, :method => :delete, :class => 'inverse button red' %>
+    <%= link_to 'Accept', games_path(:challenge_id => incoming.id), :method => :post,
+      :class => 'inverse button green' %>
+    <%= link_to 'Decline', incoming, :method => :delete,
+      :class => 'inverse button red' %>
   </p>
 </div>
