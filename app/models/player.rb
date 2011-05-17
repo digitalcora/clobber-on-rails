@@ -14,8 +14,17 @@ class Player < ActiveRecord::Base
                          :numericality => { :only_integer => true, :greater_than => 0 }
   
   def set_defaults
-    self.active = true
-    self.turn_up = false
-    self.won_game = false
+    if new_record?
+      self.active = true
+      self.turn_up = false
+      self.won_game = false
+    end
+  end
+  
+  def any_moves?
+    self.pieces.each do |piece|
+      return true if !piece.move_targets.empty?
+    end
+    return false
   end
 end
