@@ -39,6 +39,15 @@ module SessionsHelper
     redirect_to(session[:return_to] || default)
     clear_return_to
   end
+  
+  # This doesn't belong here but it'll have to do for now
+  def active_game
+    current_user.active_game
+  end
+  
+  def active_game?
+    !current_user.active_game.nil?
+  end
 
   private
 

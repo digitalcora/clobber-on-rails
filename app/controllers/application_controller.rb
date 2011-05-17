@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   before_filter :touch_user
   
-  TILE_SIZE = 100.0 # Floating point for nicer SVG
-  
   private
   
     def touch_user
