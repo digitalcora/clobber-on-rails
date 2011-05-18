@@ -16,6 +16,7 @@ class GamesController < ApplicationController
       player = user.players.build
       player.game = @game
       player.turn_order = i + 1
+      player.turn_up = true if user == @challenge.user
       player.save!
     end
     @challenge.destroy
@@ -72,6 +73,18 @@ class GamesController < ApplicationController
         player.active = false
         player.save!
       end
+    end
+    
+    redirect_to @game
+  end
+  
+  # Slightly breaks REST since we're not actually destroying it
+  def destroy
+    @game.active = false
+    @game.save!
+    @game.players.each do |player|
+      player.active = false
+      player.save!
     end
     
     redirect_to @game

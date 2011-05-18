@@ -3,7 +3,7 @@ Clobber::Application.routes.draw do
   resources :sessions,   :only => [:new, :create, :destroy]
   resources :messages,   :only => [:create]
   resources :challenges, :only => [:create, :destroy]
-  resources :games,      :only => [:show, :create] do
+  resources :games,      :only => [:show, :create, :destroy] do
     resources :pieces,     :only => [:edit, :update],
                            :controller => 'games'
   end

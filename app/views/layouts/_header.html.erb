@@ -9,7 +9,7 @@
       <% end %>
       <% if signed_in? %>
         <% if active_game? %>
-          <li><%= link_to 'Abandon Game', active_game,
+          <li><%= link_to 'Abandon Game', active_game, :method => :delete,
             :confirm => 'Really abandon this game?', :class => 'inverse button red' %>
         <% else %>
           <li><%= link_to 'Sign Out', signout_path,
