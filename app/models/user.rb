@@ -14,11 +14,7 @@ class User < ActiveRecord::Base
     :class_name => 'Player', :conditions => ['active = ?', true]
   has_one :active_game,
     :through => :players, :source => :game, :conditions => ['games.active = ?', true]
-  has_many :past_players,
-    :class_name => 'Player', :conditions => ['active = ?', false]
-  has_many :past_games,
-    :through => :players, :source => :game, :conditions => ['games.active = ?', false]
-    
+  
   scope :online, lambda {
     where('updated_at > ?', 30.seconds.ago).
     order('username')
