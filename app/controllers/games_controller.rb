@@ -66,13 +66,7 @@ class GamesController < ApplicationController
     if not next_player.any_moves?
       @piece.player.won_game = true
       @piece.player.save!
-      
-      @game.active = false
-      @game.save!
-      @game.players.each do |player|
-        player.active = false
-        player.save!
-      end
+      deactivate_game
     end
     
     redirect_to @game
@@ -80,13 +74,7 @@ class GamesController < ApplicationController
   
   # Slightly breaks REST since we're not actually destroying it
   def destroy
-    @game.active = false
-    @game.save!
-    @game.players.each do |player|
-      player.active = false
-      player.save!
-    end
-    
+    deactivate_game
     redirect_to @game
   end
   
@@ -143,6 +131,15 @@ class GamesController < ApplicationController
         'You won!'
       else
         'You lost!'
+      end
+    end
+    
+    def deactivate_game
+      @game.active = false
+      @game.save!
+      @game.players.each do |player|
+        player.active = false
+        player.save!
       end
     end
 end
