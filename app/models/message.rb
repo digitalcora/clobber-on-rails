@@ -1,5 +1,6 @@
 class Message < ActiveRecord::Base
   attr_accessible :content
+  default_scope order(:created_at)
   
   belongs_to :user
   belongs_to :game
