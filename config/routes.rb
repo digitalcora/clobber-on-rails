@@ -7,6 +7,8 @@ Clobber::Application.routes.draw do
     resources :pieces,     :only => [:edit, :update],
                            :controller => 'games'
   end
+  # FIXME - Breaks REST, but link_to doesn't work in SVG
+  match 'games/:game_id/pieces/:id/update' => 'games#update', :as => :update_piece
   
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'

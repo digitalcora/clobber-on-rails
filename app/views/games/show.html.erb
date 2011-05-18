@@ -17,12 +17,20 @@
     end %>
     
     <% @game.pieces.each do |piece| %>
-      <% if piece.player.user == current_user %>
+      <% if piece.player.user == current_user and piece.player.turn_up %>
         <a xlink:href="<%= edit_game_piece_path(@game, piece) %>">
       <% end %>
-        <use x="<%= piece.x * TILE_SIZE %>" y="<%= piece.y * TILE_SIZE %>"
+        <use id="piece<%= piece.id %>"
+          x="<%= piece.x * TILE_SIZE %>" y="<%= piece.y * TILE_SIZE %>"
           xlink:href="#<%= piece.player.turn_order == 1 ? 'redPiece' : 'bluePiece' %>" />
-      <% if piece.player.user == current_user %></a><% end %>
+      <% if piece.player.user == current_user and piece.player.turn_up %></a><% end %>
     <% end %>
+    
+    <% @piece.move_targets.each do |target| %>
+      <a xlink:href="<%= update_piece_path(@game, @piece, :x => target.x, :y => target.y) %>">
+        <use x="<%= target.x * TILE_SIZE %>" y="<%= target.y * TILE_SIZE %>"
+          xlink:href="#moveTarget" />
+      </a>
+    <% end if @piece %>
   </svg>
 </div>

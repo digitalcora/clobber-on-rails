@@ -15,11 +15,23 @@
     <stop offset="0%" stop-color="blue" />
     <stop offset="100%" stop-color="#119" />
   </linearGradient>
+  <radialGradient id="moveTargetShading">
+    <stop offset="0%" stop-color="yellow" stop-opacity="0" />
+    <stop offset="70%" stop-color="yellow" stop-opacity="0" />
+    <stop offset="85%" stop-color="yellow" stop-opacity="0.8" />
+    <stop offset="90%" stop-color="yellow" stop-opacity="1" />
+    <stop offset="95%" stop-color="yellow" stop-opacity="0.8" />
+    <stop offset="100%" stop-color="yellow" stop-opacity="0" />
+  </radialGradient>
+  
   <symbol id="blackSquare">
     <rect width="<%= TILE_SIZE %>" height="<%= TILE_SIZE %>" fill="url(#blackShading)" />
   </symbol>
   <symbol id="whiteSquare">
     <rect width="<%= TILE_SIZE %>" height="<%= TILE_SIZE %>" fill="url(#whiteShading)" />
+  </symbol>
+  <symbol id="moveTarget">
+    <rect width="<%= TILE_SIZE %>" height="<%= TILE_SIZE %>" fill="url(#moveTargetShading)" />
   </symbol>
   <symbol id="redPiece">
     <ellipse cx="<%= TILE_SIZE / 2 %>" cy="<%= TILE_SIZE * 9 / 16 %>"

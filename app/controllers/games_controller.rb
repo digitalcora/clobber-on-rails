@@ -1,8 +1,10 @@
 class GamesController < ApplicationController
   before_filter :authenticate
   before_filter :find_records, :except => :create
-  before_filter :setup_show, :only => [:show, :edit]
   before_filter :find_challenge, :only => :create
+  before_filter :check_player_access, :except => :create
+  before_filter :check_player_turn, :only => [:edit, :update]
+  before_filter :setup_show, :only => [:show, :edit]
 
   def show
     # Nothing special
@@ -36,7 +38,6 @@ class GamesController < ApplicationController
   end
   
   def edit
-    flash.now[:notice] = 'Piece moving not implemented yet!'
     render 'show'
   end
   
@@ -57,6 +58,31 @@ class GamesController < ApplicationController
       end
     end
     
+    def find_challenge
+      @challenge = Challenge.find_by_id(params[:challenge_id])
+      if @challenge.nil?
+        flash[:notice] = 'The challenge you were attempting to accept has been canceled.'
+        redirect_to :back
+      end
+    end
+    
+    def check_player_access
+      if @game.players.include?(current_user.active_player)
+        return true
+      elsif (@game.players & current_user.players).any?
+        redirect_to root_path, :notice => 'The game is over: ' + outcome_string
+      else
+        redirect_to root_path
+      end
+    end
+    
+    def check_player_turn
+      if not current_user.active_player.turn_up
+        redirect_to :back,
+          :flash => { :error => "Can't perform this action when it's not your turn!" }
+      end
+    end
+    
     def setup_show
       @title = 'Game versus ' +
         @game.players.reject{ |p| p == current_user.active_player}.
@@ -65,11 +91,13 @@ class GamesController < ApplicationController
       @messages = @game.messages
     end
     
-    def find_challenge
-      @challenge = Challenge.find_by_id(params[:challenge_id])
-      if @challenge.nil?
-        flash[:notice] = 'The challenge you were attempting to accept has been canceled.'
-        redirect_to :back
+    def outcome_string
+      if @game.winner.nil?
+        'It was abandoned.'
+      elsif current_user.players.include?(@game.winner)
+        'You won!'
+      else
+        'You lost!'
       end
     end
 end
