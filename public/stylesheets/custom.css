@@ -83,13 +83,31 @@ footer {
   font-weight: bold;
 }
 
+.user {
+  line-height: 1.75;
+}
+
 .user .username {
   font-weight: bold;
+  margin-right: 0.5em;
+}
+
+.user .stats {
+  color: #999;
+  font-weight: bold;
+}
+
+.user .stats .wins {
+  color: #3a3;
+}
+
+.user .stats .losses {
+  color: #c33;
 }
 
 /* Buttons */
 
-a.button, nav ul li a {
+.button, nav ul li a {
   font-weight: bold;
   text-decoration: none;
   padding: 2px 4px;
@@ -101,25 +119,34 @@ nav ul li a {
   border: 1px solid #ee3;
 }
 
-a.button.inverse {
+.button.inverse {
   color: white;
   border: none;
 }
 
-a.button.inverse:hover {
+.button.inverse:hover {
   opacity: 0.75;
 }
 
-a.button.inverse.green {
+.button.inverse.green {
   background-color: #3a3;
 }
 
-a.button.inverse.blue {
+.button.inverse.blue {
   background-color: #36e;
 }
 
-a.button.inverse.red {
+.button.inverse.red {
   background-color: #c33;
+}
+
+.button.inverse.yellow {
+  background-color: #ee3;
+}
+
+.button.blank {
+  color: #ccc;
+  background-color: #ccc;
 }
 
 /* Navigation */

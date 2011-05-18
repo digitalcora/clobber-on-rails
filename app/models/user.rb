@@ -47,7 +47,19 @@ class User < ActiveRecord::Base
     user = find_by_id(id)
     (user && user.salt == cookie_salt) ? user : nil
   end
-    
+  
+  def wins
+    self.players.where('won_game = ?', true).count
+  end
+  
+  def losses
+    count = 0
+    self.games.each do |game|
+      count += 1 if game.players.where('won_game = ?', true).any?
+    end
+    return count
+  end
+  
   private
   
     def encrypt_password

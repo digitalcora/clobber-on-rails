@@ -1,8 +1,16 @@
 <div class="user">
   <% if current_user?(user) %>
-    <span class="username"><%= user.username %></span>
+    <span class="blank button">C!</span>
   <% else %>
-    <span class="username"><%= link_to user.username,
-      challenges_path(:challenge => {:target_user_id => user.id}), :method => :post %></span>
+    <%= link_to 'C!', challenges_path(:challenge => {:target_user_id => user.id}),
+      :method => :post, :class => 'inverse button yellow' %>
   <% end %>
+  <span class="username"><%= user.username %></span>
+  <span class="stats">
+    [
+    <span class="wins"><%= user.wins %></span>
+    /
+    <span class="losses"><%= user.losses %></span>
+    ]
+  </span>
 </div>
