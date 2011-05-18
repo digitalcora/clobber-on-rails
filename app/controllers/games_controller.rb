@@ -62,7 +62,17 @@ class GamesController < ApplicationController
     next_player.turn_up = true
     next_player.save!
     
-    # TODO - Check for victory condition
+    if not next_player.any_moves?
+      @piece.player.won_game = true
+      @piece.player.save!
+      
+      @game.active = false
+      @game.save!
+      @game.players.each do |player|
+        player.active = false
+        player.save!
+      end
+    end
     
     redirect_to @game
   end
