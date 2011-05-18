@@ -38,11 +38,33 @@ class GamesController < ApplicationController
   end
   
   def edit
-    render 'show'
+    if @piece.move_targets.empty?
+      redirect_to @game, :flash => { :error => 'That piece cannot be moved!' }
+    else
+      render 'show'
+    end
   end
   
   def update
-    redirect_to @game, :notice => 'Piece moving not implemented yet!'
+    target_piece = @piece.move_targets.find{
+      |p| p.x == params[:x].to_i && p.y == params[:y].to_i }
+    redirect_to @game if target_piece.nil?
+    
+    target_piece.destroy
+    @piece.x, @piece.y = target_piece.x, target_piece.y
+    @piece.save!
+    
+    @piece.player.turn_up = false
+    @piece.player.save!
+    
+    next_player = @game.players.find_by_turn_order(@piece.player.turn_order + 1)
+    next_player = @game.players.find_by_turn_order(1) if next_player.nil?
+    next_player.turn_up = true
+    next_player.save!
+    
+    # TODO - Check for victory condition
+    
+    redirect_to @game
   end
   
   private
