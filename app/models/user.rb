@@ -51,7 +51,8 @@ class User < ActiveRecord::Base
   def losses
     count = 0
     self.games.each do |game|
-      count += 1 if game.players.where('won_game = ?', true).any?
+      winner = game.players.where('won_game = ?', true).first
+      count += 1 if winner and winner.user != self
     end
     return count
   end
