@@ -9,8 +9,10 @@ class ChallengesController < ApplicationController
   end
 
   def destroy
-    @challenge = Challenge.find(params[:id])
-    if current_user?(@challenge.user)
+    @challenge = Challenge.find_by_id(params[:id])
+    if @challenge.nil?
+      flash[:notice] = 'The challenge you were attempting to decline was already canceled.'
+    elsif current_user?(@challenge.user)
       @challenge.destroy
       flash[:notice] = 'Challenge canceled.'
     elsif current_user?(@challenge.target_user)
