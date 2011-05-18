@@ -56,12 +56,19 @@ footer {
   margin-bottom: 8px;
 }
 
+#status_pane .status {
+  font-size: 1.75em;
+  font-weight: bold;
+  line-height: 1;
+  margin: 16px 0;
+}
+
 #lobby #messages {
   height: 450px;
 }
 
 #sidebar #messages {
-  height: 300px;
+  height: 350px;
 }
 
 #users {
