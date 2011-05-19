@@ -5,7 +5,10 @@ class ChallengesController < ApplicationController
   def create
     @challenge = current_user.build_challenge(params[:challenge])
     flash[:error] = @challenge.errors.full_messages.join(', ') if not @challenge.save
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { head :ok }
+    end
   end
 
   def destroy
@@ -19,6 +22,10 @@ class ChallengesController < ApplicationController
       @challenge.destroy
       flash[:notice] = 'Challenge declined.'
     end
-    redirect_to :back
+    
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { head :ok }
+    end
   end
 end

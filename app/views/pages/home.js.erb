@@ -1,2 +1,24 @@
 <%= render 'shared/update_chat' %>
+<% { 'sent' => @sent_challenge,
+  'incoming' => @incoming_challenge }.each do |type, challenge| %>
+  <% if challenge %>
+    var new_div = $('<%=
+      raw escape_javascript(render(:partial => "challenges/#{type}", :object => challenge))
+      %>');
+    if ($('#<%= type %>_pane').length > 0) {
+      if ($('#<%= type %>_pane').text() != new_div.text()) {
+        $('#<%= type %>_pane').slideUp('', function(){
+          $(this).remove();
+          $('#users_pane').after(new_div);
+          new_div.hide().slideDown();
+        });
+      }
+    } else {
+      $('#users_pane').after(new_div);
+      new_div.hide().slideDown();
+    }
+  <% else %>
+    $('#<%= type %>_pane').slideUp('', function(){ $(this).remove(); });
+  <% end %>
+<% end %>
 setTimeout(function(){ $.getScript('/pages/home.js?since=<%= DateTime.now %>') }, 750)

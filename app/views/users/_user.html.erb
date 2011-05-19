@@ -3,7 +3,7 @@
     <span class="blank button">C!</span>
   <% else %>
     <%= link_to 'C!', challenges_path(:challenge => {:target_user_id => user.id}),
-      :method => :post, :class => 'inverse button yellow' %>
+      :method => :post, :remote => true, :class => 'inverse button yellow' %>
   <% end %>
   <span class="username"><%= user.username %></span>
   <span class="stats">

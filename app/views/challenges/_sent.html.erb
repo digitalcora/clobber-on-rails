@@ -1,5 +1,6 @@
 <div id="sent_pane" class="pane">
   <h2>Sent Challenge</h2>
   <p>Waiting for <%= sent.target_user.username %> to respond to your challenge...</p>
-  <p><%= link_to 'Cancel', sent, :method => :delete, :class => 'inverse button red' %></p>
+  <p><%= link_to 'Cancel', sent,
+    :method => :delete, :remote => true, :class => 'inverse button red' %></p>
 </div>

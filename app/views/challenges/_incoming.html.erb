@@ -4,7 +4,7 @@
   <p>
     <%= link_to 'Accept', games_path(:challenge_id => incoming.id), :method => :post,
       :class => 'inverse button green' %>
-    <%= link_to 'Decline', incoming, :method => :delete,
-      :class => 'inverse button red' %>
+    <%= link_to 'Decline', incoming,
+      :method => :delete, :remote => true, :class => 'inverse button red' %>
   </p>
 </div>
