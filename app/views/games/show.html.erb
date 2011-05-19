@@ -40,3 +40,8 @@
     <% end if @piece %>
   </svg>
 </div>
+
+<script type="text/javascript">
+  setTimeout(function(){
+    $.getScript('<%= request.env['PATH_INFO'] %>.js?since=<%= DateTime.now %>') }, 750)
+</script>

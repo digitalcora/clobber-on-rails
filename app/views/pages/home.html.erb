@@ -14,6 +14,9 @@
   <div id="lobby" class="pane">
     <%= render 'shared/chat_interface' %>
   </div>
+  <script type="text/javascript">
+    setTimeout(function(){ $.getScript('/pages/home.js?since=<%= DateTime.now %>') }, 750)
+  </script>
 <% else %>
   <p>Welcome! You are not signed in. To play,
   <%= link_to 'Sign In', signin_path, :class => 'inverse button blue' %>

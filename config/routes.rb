@@ -15,4 +15,5 @@ Clobber::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy'
   
   root :to => 'pages#home'
+  get 'pages/home'
 end

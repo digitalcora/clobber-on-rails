@@ -117,11 +117,20 @@ class GamesController < ApplicationController
     end
     
     def setup_show
-      @title = 'Game versus ' +
-        @game.players.reject{ |p| p == current_user.active_player}.
-          map{ |p| p.user.username }.join(', ')
-      @message = Message.new
-      @messages = @game.messages
+      respond_to do |format|
+        format.html do
+          @title = 'Game versus ' +
+            @game.players.reject{ |p| p == current_user.active_player}.
+              map{ |p| p.user.username }.join(', ')
+          @message = Message.new
+          @messages = @game.messages
+        end
+        
+        format.js do
+          @messages = @game.messages.where(:created_at =>
+            (DateTime.parse(params[:since])..DateTime.now))
+        end
+      end
     end
     
     def outcome_string

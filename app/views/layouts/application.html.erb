@@ -4,6 +4,32 @@
   <title><%= title %></title>
   <%= render 'layouts/stylesheets' %>
   <%= javascript_include_tag 'application.js', 'jquery.min.js', 'rails.js' %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      // Try to focus any inputs that need focusing
+      $('#session_username').focus();
+      $('#user_username').focus();
+      $('#message_content').focus();
+      
+      // Make message form clear on submission
+      $('#new_message').live('ajax:beforeSend', function() {
+        $('#message_content').val('').focus();
+      });
+      
+      // Get rid of any flashes hanging around
+      $('.flash').delay(4000).slideUp('', function(){$(this).remove();});
+    });
+    
+    $(document).ajaxComplete(function(e, request, opts) {
+      if (request.getResponseHeader('X-Message') != null) {
+        var flash = $('<div class="flash ' +
+          request.getResponseHeader('X-Message-Type') + '">' +
+          request.getResponseHeader('X-Message') + '</div>');
+        $('#flashes').append(flash);
+        flash.hide().slideDown().delay(4000).slideUp('', function(){$(this).remove();});
+      }
+    });
+  </script>
   <%= csrf_meta_tag %>
 </head>
   <body>
@@ -12,9 +38,11 @@
       <% if @title %>
         <h1><%= @title %></h1>
       <% end %>
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, :class => "flash #{key}") %>
-      <% end %>
+      <div id="flashes">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, :class => "flash #{key}") %>
+        <% end %>
+      </div>
       <%= yield %>
       <%= render 'layouts/footer' %>
     </div>

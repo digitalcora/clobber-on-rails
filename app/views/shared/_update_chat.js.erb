@@ -1,0 +1,5 @@
+<% if @messages.any? %>
+  $('#messages').append('<%= raw escape_javascript(render(@messages)) %>');
+  $('#messages').animate({
+    scrollTop: $('#messages').attr('scrollHeight') - $('#messages').height() }, 500);
+<% end %>
