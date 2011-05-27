@@ -1,4 +1,7 @@
 <%= render 'shared/update_chat' %>
+
+$('#users').html('<%= raw escape_javascript(render(@users)) %>');
+
 <% { 'sent' => @sent_challenge,
   'incoming' => @incoming_challenge }.each do |type, challenge| %>
   <% if challenge %>

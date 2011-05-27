@@ -6,7 +6,6 @@ class PagesController < ApplicationController
       respond_to do |format|
         format.html do
           @title = 'Game Lobby'
-          @users = User.online
           @message = Message.new
           @messages = Message.where(:game_id => nil,
             :created_at => (DateTime.now - 5.minutes)..DateTime.now)
@@ -18,6 +17,7 @@ class PagesController < ApplicationController
         end
       end
       
+      @users = User.online
       @sent_challenge = current_user.challenge
       @incoming_challenge = current_user.incoming_challenge
     end

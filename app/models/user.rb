@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     :through => :players, :source => :game, :conditions => ['games.active = ?', true]
   
   scope :online, lambda {
-    where('updated_at > ?', 1.minute.ago).
+    where('updated_at > ?', 10.seconds.ago).
     order('username')
   }
   
