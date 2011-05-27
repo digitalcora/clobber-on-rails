@@ -1,3 +1,4 @@
 <%= render 'shared/update_chat' %>
 setTimeout(function(){
-  $.getScript('<%= request.env['PATH_INFO'] %>?since=<%= DateTime.now %>') }, 750)
+    $.getScript('<%= request.env['PATH_INFO'] %>?since=<%= DateTime.now %>')
+  }, <%= UPDATE_DELAY %>)

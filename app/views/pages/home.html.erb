@@ -15,7 +15,9 @@
     <%= render 'shared/chat_interface' %>
   </div>
   <script type="text/javascript">
-    setTimeout(function(){ $.getScript('/pages/home.js?since=<%= DateTime.now %>') }, 750)
+    setTimeout(function(){
+        $.getScript('/pages/home.js?since=<%= DateTime.now %>')
+      }, <%= UPDATE_DELAY %>)
   </script>
 <% else %>
   <p>Welcome! You are not signed in. To play,
