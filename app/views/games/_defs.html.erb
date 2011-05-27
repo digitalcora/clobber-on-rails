@@ -7,14 +7,12 @@
     <stop offset="0%" stop-color="#fff" />
     <stop offset="100%" stop-color="#ccc" />
   </linearGradient>
-  <linearGradient x1="10%" x2="90%" y1="40%" y2="60%" id="redPieceShading">
-    <stop offset="0%" stop-color="red" />
-    <stop offset="100%" stop-color="#a11" />
-  </linearGradient>
-  <linearGradient x1="10%" x2="90%" y1="40%" y2="60%" id="bluePieceShading">
-    <stop offset="0%" stop-color="blue" />
-    <stop offset="100%" stop-color="#119" />
-  </linearGradient>
+  <% PLAYER_COLORS.each do |color| %>
+    <linearGradient x1="10%" x2="90%" y1="40%" y2="60%" id="<%= color[:name] %>PieceShading">
+      <stop offset="0%" stop-color="<%= color[:primary] %>" />
+      <stop offset="100%" stop-color="<%= color[:secondary] %>" />
+    </linearGradient>
+  <% end %>
   <radialGradient id="moveTargetShading">
     <stop offset="0%" stop-color="yellow" stop-opacity="0" />
     <stop offset="70%" stop-color="yellow" stop-opacity="0" />
@@ -33,38 +31,23 @@
   <symbol id="moveTarget">
     <rect width="<%= TILE_SIZE %>" height="<%= TILE_SIZE %>" fill="url(#moveTargetShading)" />
   </symbol>
-  <symbol id="redPiece">
-    <ellipse cx="<%= TILE_SIZE / 2 %>" cy="<%= TILE_SIZE * 9 / 16 %>"
-      rx="<%= TILE_SIZE * 3 / 8 %>" ry="<%= TILE_SIZE / 4 %>"
-      fill="url(#redPieceShading)" stroke="black" stroke-width="2" />
-    <rect x="<%= TILE_SIZE / 8 %>" y="<%= TILE_SIZE / 2 %>"
-      width="<%= TILE_SIZE * 3 / 4 %>" height="<%= TILE_SIZE / 16 %>"
-      fill="url(#redPieceShading)" />
-    <ellipse cx="<%= TILE_SIZE / 2 %>" cy="<%= TILE_SIZE * 7 / 16 %>"
-      rx="<%= TILE_SIZE * 3 / 8 %>" ry="<%= TILE_SIZE / 4 %>"
-      fill="red" stroke="black" stroke-width="2" />
-    <line x1="<%= TILE_SIZE / 8 %>" y1="<%= TILE_SIZE * 7 / 16 %>"
-      x2="<%= TILE_SIZE / 8 %>" y2="<%= TILE_SIZE * 9 / 16 %>"
-      stroke="black" stroke-width="2" />
-    <line x1="<%= TILE_SIZE * 7 / 8 %>" y1="<%= TILE_SIZE * 7 / 16 %>"
-      x2="<%= TILE_SIZE * 7 / 8 %>" y2="<%= TILE_SIZE * 9 / 16 %>"
-      stroke="black" stroke-width="2" />
-  </symbol>
-  <symbol id="bluePiece">
-    <ellipse cx="<%= TILE_SIZE / 2 %>" cy="<%= TILE_SIZE * 9 / 16 %>"
-      rx="<%= TILE_SIZE * 3 / 8 %>" ry="<%= TILE_SIZE / 4 %>"
-      fill="url(#bluePieceShading)" stroke="black" stroke-width="2" />
-    <rect x="<%= TILE_SIZE / 8 %>" y="<%= TILE_SIZE / 2 %>"
-      width="<%= TILE_SIZE * 3 / 4 %>" height="<%= TILE_SIZE / 16 %>"
-      fill="url(#bluePieceShading)" />
-    <ellipse cx="<%= TILE_SIZE / 2 %>" cy="<%= TILE_SIZE * 7 / 16 %>"
-      rx="<%= TILE_SIZE * 3 / 8 %>" ry="<%= TILE_SIZE / 4 %>"
-      fill="blue" stroke="black" stroke-width="2" />
-    <line x1="<%= TILE_SIZE / 8 %>" y1="<%= TILE_SIZE * 7 / 16 %>"
-      x2="<%= TILE_SIZE / 8 %>" y2="<%= TILE_SIZE * 9 / 16 %>"
-      stroke="black" stroke-width="2" />
-    <line x1="<%= TILE_SIZE * 7 / 8 %>" y1="<%= TILE_SIZE * 7 / 16 %>"
-      x2="<%= TILE_SIZE * 7 / 8 %>" y2="<%= TILE_SIZE * 9 / 16 %>"
-      stroke="black" stroke-width="2" />
-  </symbol>
+  <% PLAYER_COLORS.each do |color| %>
+    <symbol id="<%= color[:name] %>Piece">
+      <ellipse cx="<%= TILE_SIZE / 2 %>" cy="<%= TILE_SIZE * 9 / 16 %>"
+        rx="<%= TILE_SIZE * 3 / 8 %>" ry="<%= TILE_SIZE / 4 %>"
+        fill="url(#<%= color[:name] %>PieceShading)" stroke="black" stroke-width="2" />
+      <rect x="<%= TILE_SIZE / 8 %>" y="<%= TILE_SIZE / 2 %>"
+        width="<%= TILE_SIZE * 3 / 4 %>" height="<%= TILE_SIZE / 16 %>"
+        fill="url(#<%= color[:name] %>PieceShading)" />
+      <ellipse cx="<%= TILE_SIZE / 2 %>" cy="<%= TILE_SIZE * 7 / 16 %>"
+        rx="<%= TILE_SIZE * 3 / 8 %>" ry="<%= TILE_SIZE / 4 %>"
+        fill="<%= color[:primary] %>" stroke="black" stroke-width="2" />
+      <line x1="<%= TILE_SIZE / 8 %>" y1="<%= TILE_SIZE * 7 / 16 %>"
+        x2="<%= TILE_SIZE / 8 %>" y2="<%= TILE_SIZE * 9 / 16 %>"
+        stroke="black" stroke-width="2" />
+      <line x1="<%= TILE_SIZE * 7 / 8 %>" y1="<%= TILE_SIZE * 7 / 16 %>"
+        x2="<%= TILE_SIZE * 7 / 8 %>" y2="<%= TILE_SIZE * 9 / 16 %>"
+        stroke="black" stroke-width="2" />
+    </symbol>
+  <% end %>
 </defs>

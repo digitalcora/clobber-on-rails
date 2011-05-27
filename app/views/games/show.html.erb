@@ -28,7 +28,7 @@
       <% end %>
         <use id="piece<%= piece.id %>"
           x="<%= piece.x * TILE_SIZE %>" y="<%= piece.y * TILE_SIZE %>"
-          xlink:href="#<%= piece.player.turn_order == 1 ? 'redPiece' : 'bluePiece' %>" />
+          xlink:href="#<%= PLAYER_COLORS[piece.player.turn_order - 1][:name] %>Piece" />
       <% if piece.player.user == current_user and piece.player.turn_up %></a><% end %>
     <% end %>
     
