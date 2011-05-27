@@ -63,6 +63,8 @@ class GamesController < ApplicationController
     next_player.turn_up = true
     next_player.save!
     
+    @game.increment!(:turns)
+    
     if not next_player.any_moves?
       @piece.player.won_game = true
       @piece.player.save!
