@@ -38,6 +38,11 @@ footer {
   word-wrap: break-word;
 }
 
+#front_pane h2,
+#front_pane p {
+  margin-bottom: 8px;
+}
+
 #lobby, #board {
   width: 500px;
 }

@@ -20,9 +20,5 @@
       }, <%= UPDATE_DELAY %>)
   </script>
 <% else %>
-  <p>Welcome! You are not signed in. To play,
-  <%= link_to 'Sign In', signin_path, :class => 'inverse button blue' %>
-  with an existing account or
-  <%= link_to 'Sign Up', signup_path, :class => 'inverse button green' %>
-  for a new account.</p>
+  <%= render 'front' %>
 <% end %>
