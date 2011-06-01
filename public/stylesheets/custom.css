@@ -228,9 +228,3 @@ form.new_message .field {
 #error_explanation ul li {
   list-style: square;
 }
-
-/* Round corners */
-
-.round {
-  border-radius:         8px;
-}
