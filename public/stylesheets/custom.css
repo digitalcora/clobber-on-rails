@@ -20,6 +20,10 @@ footer {
   border-top: 1px solid #ccc;
 }
 
+h2, p {
+  margin-bottom: 8px;
+}
+
 .flash {
   border-radius: 5px;
 }
@@ -38,11 +42,6 @@ footer {
   word-wrap: break-word;
 }
 
-#front_pane h2,
-#front_pane p {
-  margin-bottom: 8px;
-}
-
 #lobby, #board {
   width: 500px;
 }
@@ -58,7 +57,6 @@ footer {
   line-height: 1;
   font-weight: bold;
   border-bottom: 2px solid #ddd;
-  margin-bottom: 8px;
 }
 
 #status_pane .status {
@@ -97,16 +95,16 @@ footer {
   margin-right: 0.5em;
 }
 
-.user .stats {
+.stats {
   color: #999;
   font-weight: bold;
 }
 
-.user .stats .wins {
+.stats .wins {
   color: #3a3;
 }
 
-.user .stats .losses {
+.stats .losses {
   color: #c33;
 }
 
@@ -119,7 +117,7 @@ footer {
   border-radius: 5px;
 }
 
-nav ul li a {
+.button.normal, nav ul li a {
   margin: 0 4px;
   border: 1px solid #ee3;
 }

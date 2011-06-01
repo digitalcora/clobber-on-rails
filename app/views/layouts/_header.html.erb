@@ -8,6 +8,7 @@
         <li><%= link_to 'Account', edit_user_path(current_user) %></li>
       <% end %>
       <% if signed_in? %>
+        <li><%= link_to 'Help!', '#', :class => 'help_link' %></li>
         <% if active_game? %>
           <li><%= link_to 'Abandon Game', active_game, :method => :delete,
             :confirm => 'Really abandon this game?', :class => 'inverse button red' %>
