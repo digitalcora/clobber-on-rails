@@ -1,5 +1,5 @@
 Clobber::Application.routes.draw do
-  resources :users
+  resources :users,      :only => [:new, :create, :edit, :update]
   resources :sessions,   :only => [:new, :create, :destroy]
   resources :messages,   :only => [:create]
   resources :challenges, :only => [:create, :destroy]

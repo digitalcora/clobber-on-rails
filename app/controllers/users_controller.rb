@@ -2,19 +2,7 @@ class UsersController < ApplicationController
   before_filter :no_user, :only => [:new, :create]
   before_filter :authenticate, :except => [:show, :new, :create]
   before_filter :correct_user, :only => [:edit, :update]
-  #before_filter :admin_user, :only => :destroy
   before_filter :active_game_redirect, :except => [:new, :create]
-  
-  def index
-    @title = "User List"
-    # List users
-  end
-
-  def show
-    @user = User.find(params[:id])
-    @title = @user.username
-    # Show user info
-  end
   
   def new
     @title = 'Sign Up'
@@ -50,12 +38,6 @@ class UsersController < ApplicationController
     end
   end
   
-  #def destroy
-  #  User.find(params[:id]).destroy
-  #  flash[:success] = 'User destroyed.'
-  #  redirect_to users_path
-  #end
-  
   private
   
     def no_user
@@ -66,8 +48,4 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
     end
-    
-    #def admin_user
-    #  redirect_to(root_path) unless current_user.admin?
-    #end
 end
