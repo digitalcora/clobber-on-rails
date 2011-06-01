@@ -5,9 +5,6 @@ class MessagesController < ApplicationController
     @message = current_user.messages.build(params[:message])
     @message.game = active_game
     flash[:error] = @message.errors.full_messages.join(', ') if not @message.save
-    respond_to do |format|
-      format.html { redirect_to :back }
-      format.js { head :ok }
-    end
+    ajax_redirect_back
   end
 end

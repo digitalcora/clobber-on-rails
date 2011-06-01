@@ -20,7 +20,22 @@ class ApplicationController < ActionController::Base
     
     def active_game_redirect
       if signed_in? and active_game?
-        redirect_to active_game
+        ajax_redirect_to active_game
+      end
+    end
+    
+    def ajax_redirect_to(resource)
+      # FIXME - Can't take relative paths at the moment
+      respond_to do |format|
+        format.html { redirect_to resource }
+        format.js { render :inline => "window.location = '#{url_for resource}';" }
+      end
+    end
+    
+    def ajax_redirect_back
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js { head :ok }
       end
     end
     

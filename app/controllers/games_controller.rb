@@ -35,12 +35,13 @@ class GamesController < ApplicationController
       end
     end
     
-    redirect_to @game
+    ajax_redirect_to @game
   end
   
   def edit
     if @piece.move_targets.empty?
-      redirect_to @game, :flash => { :error => 'That piece cannot be moved!' }
+      flash[:error] = 'That piece cannot be moved!'
+      ajax_redirect_back
     else
       render 'show'
     end
@@ -77,7 +78,7 @@ class GamesController < ApplicationController
   # Slightly breaks REST since we're not actually destroying it
   def destroy
     deactivate_game
-    redirect_to @game
+    ajax_redirect_to root_url
   end
   
   private
@@ -97,7 +98,7 @@ class GamesController < ApplicationController
       @challenge = Challenge.find_by_id(params[:challenge_id])
       if @challenge.nil?
         flash[:notice] = 'The challenge you were attempting to accept has been canceled.'
-        redirect_to :back
+        ajax_redirect_back
       end
     end
     
@@ -105,16 +106,15 @@ class GamesController < ApplicationController
       if @game.players.include?(current_user.active_player)
         return true
       elsif (@game.players & current_user.players).any?
-        redirect_to root_path, :notice => 'The game is over: ' + outcome_string
-      else
-        redirect_to root_path
+        flash[:notice] = 'The game is over: ' + outcome_string
       end
+      ajax_redirect_to root_url
     end
     
     def check_player_turn
       if not current_user.active_player.turn_up
-        redirect_to :back,
-          :flash => { :error => "Can't perform this action when it's not your turn!" }
+        flash[:error] = "Can't perform this action when it's not your turn!"
+        ajax_redirect_back
       end
     end
     

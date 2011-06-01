@@ -49,6 +49,7 @@ class User < ActiveRecord::Base
   end
   
   def losses
+    # FIXME - Stupidly inefficient, needs caching
     count = 0
     self.games.each do |game|
       winner = game.players.where('won_game = ?', true).first
