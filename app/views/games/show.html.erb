@@ -1,13 +1,13 @@
 <div id="sidebar">
   <div id="status_pane" class="pane">
-    <p class="status">
-      <%= current_user.active_player.turn_up ? 'Your Turn' : "Opponent's Turn" %>
-    </p>
+    <p class="status"><%= status_string %></p>
+    
     <% color = PLAYER_COLORS[current_user.active_player.turn_order - 1] %>
     <p class="color" style="color: <%= color[:primary] %>">
       You are <%= color[:name].capitalize %>
     </p>
   </div>
+  
   <div id="chat_pane" class="pane">
     <h2>Game Chat</h2>
     <%= render 'shared/chat_interface' %>

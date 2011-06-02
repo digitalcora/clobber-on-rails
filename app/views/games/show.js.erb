@@ -1,4 +1,11 @@
 <%= render 'shared/update_chat' %>
+
+var old_status = $('#status_pane .status').text();
+var new_status = '<%= raw escape_javascript(status_string) %>';
+if (old_status != new_status) {
+  $('#status_pane .status').text(new_status).fadeOut().fadeIn().fadeOut().fadeIn();
+}
+
 setTimeout(function(){
     $.getScript('<%= request.env['PATH_INFO'] %>?since=<%= DateTime.now %>')
   }, <%= UPDATE_DELAY %>)
