@@ -10,7 +10,7 @@ class Piece < ActiveRecord::Base
   def move_targets
     move_targets = []
     [[0, -1], [0, 1], [-1, 0], [1, 0]].each do |offset|
-      target_piece = Piece.where('x = ? and y = ? and player_id != ?',
+      target_piece = self.game.pieces.where('x = ? and y = ? and player_id != ?',
         self.x + offset[0], self.y + offset[1], self.player.id).first
       move_targets << target_piece if !target_piece.nil?
     end
