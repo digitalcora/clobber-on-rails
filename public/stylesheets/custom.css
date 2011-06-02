@@ -59,11 +59,17 @@ h2, p {
   border-bottom: 2px solid #ddd;
 }
 
-#status_pane .status {
+#status_pane .status,
+#status_pane .color {
   font-size: 1.75em;
   font-weight: bold;
   line-height: 1;
-  margin: 16px 0;
+  margin: 0;
+  padding: 8px 0;
+}
+
+#status_pane .status {
+  border-bottom: 2px solid #ddd;
 }
 
 #lobby #messages {
