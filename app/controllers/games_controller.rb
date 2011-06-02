@@ -40,7 +40,7 @@ class GamesController < ApplicationController
   
   def edit
     if @piece.move_targets.empty?
-      flash[:error] = 'That piece cannot be moved!'
+      flash[:error] = "Can't move piece: There are no adjacent opposing pieces!"
       ajax_redirect_back
     else
       render 'show'
@@ -113,7 +113,7 @@ class GamesController < ApplicationController
     
     def check_player_turn
       if not current_user.active_player.turn_up
-        flash[:error] = "Can't perform this action when it's not your turn!"
+        flash[:error] = "Can't move piece: It's not your turn!"
         ajax_redirect_back
       end
     end
