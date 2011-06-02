@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include SessionsHelper
-  before_filter :touch_user
+  before_filter :touch_user, :get_help_content
   after_filter :flash_to_headers
   
   def flash_to_headers
@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
   
     def touch_user
       current_user.touch if signed_in?
+    end
+    
+    def get_help_content
+      @help_content = HELP_CONTENT[controller_name + '#' + action_name] || HELP_CONTENT['fallback'] if not request.xhr?
     end
     
     def active_game_redirect

@@ -50,6 +50,7 @@
           <%= content_tag(:div, value, :class => "flash #{key}") %>
         <% end %>
       </div>
+      <%= render 'shared/context_help' %>
       <%= yield %>
       <%= render 'layouts/footer' %>
     </div>
