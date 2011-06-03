@@ -44,8 +44,4 @@
   </svg>
 </div>
 
-<script type="text/javascript">
-  setTimeout(function(){
-      $.getScript('<%= request.env['PATH_INFO'] %>.js?last_message=' + $('.message').last().attr('data-id'))
-    }, <%= UPDATE_DELAY %>)
-</script>
+<%= render 'shared/ajax_timeout' %>

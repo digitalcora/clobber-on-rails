@@ -14,11 +14,7 @@
   <div id="lobby" class="pane">
     <%= render 'shared/chat_interface' %>
   </div>
-  <script type="text/javascript">
-    setTimeout(function(){
-        $.getScript('/pages/home.js?last_message=' + $('.message').last().attr('data-id'))
-      }, <%= UPDATE_DELAY %>)
-  </script>
+  <%= render :partial => 'shared/ajax_timeout', :locals => { :path => '/pages/home.js' } %>
 <% else %>
   <%= render 'front' %>
 <% end %>

@@ -6,6 +6,4 @@ if (old_status != new_status) {
   $('#status_pane .status').text(new_status).fadeOut().fadeIn().fadeOut().fadeIn();
 }
 
-setTimeout(function(){
-    $.getScript('<%= request.env['PATH_INFO'] %>?last_message=' + $('.message').last().attr('data-id'))
-  }, <%= UPDATE_DELAY %>)
+<%= render 'shared/ajax_timeout' %>

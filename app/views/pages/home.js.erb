@@ -24,6 +24,5 @@ $('#users').html('<%= raw escape_javascript(render(@users)) %>');
     $('#<%= type %>_pane').slideUp('', function(){ $(this).remove(); });
   <% end %>
 <% end %>
-setTimeout(function(){
-    $.getScript('/pages/home.js?last_message=' + $('.message').last().attr('data-id'))
-  }, <%= UPDATE_DELAY %>)
+
+<%= render :partial => 'shared/ajax_timeout', :locals => { :path => '/pages/home.js' } %>

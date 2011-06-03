@@ -1,0 +1,9 @@
+<%
+if !path 
+  path = request.env['PATH_INFO']
+  path += '.js' if !request.xhr? 
+end
+%>
+setTimeout(function(){
+    $.getScript('<%= path %>?last_message=' + $('.message').last().attr('data-id'))
+  }, <%= UPDATE_DELAY %>)
