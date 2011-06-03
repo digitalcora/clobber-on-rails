@@ -126,11 +126,11 @@ class GamesController < ApplicationController
               map{ |p| p.user.username }.join(', ')
           @message = Message.new
           @messages = @game.messages
+          @last_message_id = Message.last.id
         end
         
         format.js do
-          @messages = @game.messages.where(:created_at =>
-            (DateTime.parse(params[:since])..DateTime.now))
+          @messages = @game.messages.where('id > ?', params[:last_message].to_i)
         end
       end
     end

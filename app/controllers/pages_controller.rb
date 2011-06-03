@@ -9,11 +9,11 @@ class PagesController < ApplicationController
           @message = Message.new
           @messages = Message.where(:game_id => nil,
             :created_at => (DateTime.now - 5.minutes)..DateTime.now)
+          @last_message_id = Message.last.id
         end
         
         format.js do
-          @messages = Message.where(:game_id => nil,
-            :created_at => (DateTime.parse(params[:since])..DateTime.now))
+          @messages = Message.where('game_id is null and id > ?', params[:last_message].to_i)
         end
       end
       

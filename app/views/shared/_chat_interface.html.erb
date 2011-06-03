@@ -1,4 +1,5 @@
 <div id="messages" class="scroll">
+  <div style="display: none" class="message" data-id="<%= @last_message_id %>"></div>
   <%= render @messages %>
 </div>
 <%= form_for @message, :remote => true do |f| %>

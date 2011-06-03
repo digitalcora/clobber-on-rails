@@ -46,6 +46,6 @@
 
 <script type="text/javascript">
   setTimeout(function(){
-      $.getScript('<%= request.env['PATH_INFO'] %>.js?since=<%= DateTime.now %>')
+      $.getScript('<%= request.env['PATH_INFO'] %>.js?last_message=' + $('.message').last().attr('data-id'))
     }, <%= UPDATE_DELAY %>)
 </script>

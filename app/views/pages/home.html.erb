@@ -16,7 +16,7 @@
   </div>
   <script type="text/javascript">
     setTimeout(function(){
-        $.getScript('/pages/home.js?since=<%= DateTime.now %>')
+        $.getScript('/pages/home.js?last_message=' + $('.message').last().attr('data-id'))
       }, <%= UPDATE_DELAY %>)
   </script>
 <% else %>

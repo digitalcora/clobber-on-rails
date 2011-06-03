@@ -7,5 +7,5 @@ if (old_status != new_status) {
 }
 
 setTimeout(function(){
-    $.getScript('<%= request.env['PATH_INFO'] %>?since=<%= DateTime.now %>')
+    $.getScript('<%= request.env['PATH_INFO'] %>?last_message=' + $('.message').last().attr('data-id'))
   }, <%= UPDATE_DELAY %>)
