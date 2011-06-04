@@ -1,0 +1,9 @@
+<% @game.pieces.each do |piece| %>
+  <% if piece.player.user == current_user %>
+    <a xlink:href="<%= edit_game_piece_path(@game, piece) %>">
+  <% end %>
+    <use class="piece" data-id="<%= piece.id %>"
+      x="<%= piece.x * TILE_SIZE %>" y="<%= piece.y * TILE_SIZE %>"
+      xlink:href="#<%= PLAYER_COLORS[piece.player.turn_order - 1][:name] %>Piece" />
+  <% if piece.player.user == current_user %></a><% end %>
+<% end %>

@@ -30,3 +30,13 @@ $(document).ajaxComplete(function(e, request, opts) {
     flash.hide().slideDown().delay(4000).slideUp('', function(){$(this).remove();});
   }
 });
+
+// Hack because there's no "innerHTML" equivalent for SVG
+function parseSVG(s) {
+  var div = document.createElementNS('http://www.w3.org/1999/xhtml', 'div');
+  div.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg">' + s + '</svg>';
+  var frag = document.createDocumentFragment();
+  while (div.firstChild.firstChild)
+    frag.appendChild(div.firstChild.firstChild);
+  return frag;
+}

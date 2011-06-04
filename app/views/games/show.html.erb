@@ -18,29 +18,27 @@
   <svg width="<%= TILE_SIZE * @game.width %>" height="<%= TILE_SIZE * @game.height %>">
     <%= render 'defs' %>
     
-    <% @game.height.times do |row|
-      @game.width.times do |col| %>
-        <use x="<%= col * TILE_SIZE %>" y="<%= row * TILE_SIZE %>"
-          xlink:href="#<%= (row + col) % 2 == 0 ? 'blackSquare' : 'whiteSquare' %>" />
-      <% end
-    end %>
+    <g id="squares">
+      <% @game.height.times do |row|
+        @game.width.times do |col| %>
+          <use class="square" x="<%= col * TILE_SIZE %>" y="<%= row * TILE_SIZE %>"
+            xlink:href="#<%= (row + col) % 2 == 0 ? 'blackSquare' : 'whiteSquare' %>" />
+        <% end
+      end %>
+    </g>
     
-    <% @game.pieces.each do |piece| %>
-      <% if piece.player.user == current_user %>
-        <a xlink:href="<%= edit_game_piece_path(@game, piece) %>">
-      <% end %>
-        <use id="piece<%= piece.id %>"
-          x="<%= piece.x * TILE_SIZE %>" y="<%= piece.y * TILE_SIZE %>"
-          xlink:href="#<%= PLAYER_COLORS[piece.player.turn_order - 1][:name] %>Piece" />
-      <% if piece.player.user == current_user %></a><% end %>
-    <% end %>
+    <g id="pieces">
+      <%= render 'pieces' %>
+    </g>
     
-    <% @piece.move_targets.each do |target| %>
-      <a xlink:href="<%= update_piece_path(@game, @piece, :x => target.x, :y => target.y) %>">
-        <use x="<%= target.x * TILE_SIZE %>" y="<%= target.y * TILE_SIZE %>"
-          xlink:href="#moveTarget" />
-      </a>
-    <% end if @piece %>
+    <g id="targets">
+      <% @piece.move_targets.each do |target| %>
+        <a xlink:href="<%= update_piece_path(@game, @piece, :x => target.x, :y => target.y) %>">
+          <use class="target" x="<%= target.x * TILE_SIZE %>" y="<%= target.y * TILE_SIZE %>"
+            xlink:href="#moveTarget" />
+        </a>
+      <% end if @piece %>
+    </g>
   </svg>
 </div>
 
