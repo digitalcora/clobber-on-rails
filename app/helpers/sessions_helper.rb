@@ -46,7 +46,7 @@ module SessionsHelper
   end
   
   def active_game?
-    !current_user.active_game.nil?
+    signed_in? && !current_user.active_game.nil?
   end
 
   private
