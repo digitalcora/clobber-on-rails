@@ -1,5 +1,5 @@
 <%
-if !path 
+if !local_assigns.has_key?(:path) or !path
   path = request.env['PATH_INFO']
   path += '.js' if !request.xhr? 
 end

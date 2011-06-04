@@ -1,3 +1,4 @@
 <script type="text/javascript">
-  <%= render 'shared/ajax_timeout.js.erb' %>
+  <%= render 'shared/ajax_timeout.js.erb',
+    { :path => (local_assigns.has_key?(:path) ? path : nil) } %>
 </script>
