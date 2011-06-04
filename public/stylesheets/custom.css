@@ -68,8 +68,8 @@ h2, p {
   padding: 8px 0;
 }
 
-#status_pane .status {
-  border-bottom: 2px solid #ddd;
+#status_pane .color {
+  border-top: 2px solid #ddd;
 }
 
 #lobby #messages {
