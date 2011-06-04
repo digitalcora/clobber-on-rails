@@ -6,6 +6,9 @@ if (old_status != new_status) {
   $('#status_pane .status').text(new_status).fadeOut().fadeIn().fadeOut().fadeIn();
 }
 
-$('#pieces').empty().append(parseSVG('<%= raw escape_javascript(render('pieces')) %>'));
+<% if @new_turn %>
+  $('#pieces').empty().append(parseSVG('<%= raw escape_javascript(render('pieces')) %>'));
+  last_turn = <%= @game.turns %>;
+<% end %>
 
 <%= render 'shared/ajax_timeout' %>

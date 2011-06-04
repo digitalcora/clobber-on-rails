@@ -5,5 +5,5 @@ if !local_assigns.has_key?(:path) or !path
 end
 %>
 setTimeout(function(){
-    $.getScript('<%= path %>?last_message=' + $('.message').last().attr('data-id'))
+    $.getScript('<%= path %>?last_message=' + last_message_id + '&last_turn=' + last_turn)
   }, <%= UPDATE_DELAY %>)

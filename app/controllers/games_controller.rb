@@ -131,6 +131,7 @@ class GamesController < ApplicationController
         
         format.js do
           @messages = @game.messages.where('id > ?', params[:last_message].to_i)
+          @new_turn = (@game.turns > params[:last_turn].to_i)
         end
       end
     end

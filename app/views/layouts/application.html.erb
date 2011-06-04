@@ -4,6 +4,10 @@
   <title><%= title %></title>
   <%= render 'layouts/stylesheets' %>
   <%= javascript_include_tag 'jquery.min.js', 'rails.js', 'application.js' %>
+  <script type="text/javascript">
+    var last_message_id = <%= @last_message_id %>;
+    var last_turn = <%= active_game? ? active_game.turns : 0 %>;
+  </script>
   <%= csrf_meta_tag %>
 </head>
   <body>
