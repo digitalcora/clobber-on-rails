@@ -4,7 +4,7 @@ class ChallengesController < ApplicationController
 
   def create
     @challenge = current_user.build_challenge(params[:challenge])
-    flash[:error] = @challenge.errors.full_messages.join(', ') if not @challenge.save
+    flash[:error] = @challenge.errors.first[1] if not @challenge.save
     ajax_redirect_back
   end
 

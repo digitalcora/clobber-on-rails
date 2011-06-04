@@ -4,7 +4,9 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.build(params[:message])
     @message.game = active_game
-    flash[:error] = @message.errors.full_messages.join(', ') if not @message.save
+    if not @message.content.blank?
+      flash[:error] = @message.errors.first[1] if not @message.save
+    end
     ajax_redirect_back
   end
 end
