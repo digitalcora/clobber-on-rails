@@ -32,12 +32,7 @@
     </g>
     
     <g id="targets">
-      <% @piece.move_targets.each do |target| %>
-        <a xlink:href="<%= update_piece_path(@game, @piece, :x => target.x, :y => target.y) %>">
-          <use class="target" x="<%= target.x * TILE_SIZE %>" y="<%= target.y * TILE_SIZE %>"
-            xlink:href="#moveTarget" />
-        </a>
-      <% end if @piece %>
+      <%= render 'targets' if @piece %>
     </g>
   </svg>
 </div>

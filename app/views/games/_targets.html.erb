@@ -1,0 +1,6 @@
+<% @piece.move_targets.each do |target| %>
+  <a href="<%= update_piece_path(@game, @piece, :x => target.x, :y => target.y) %>">
+    <use class="target" x="<%= target.x * TILE_SIZE %>" y="<%= target.y * TILE_SIZE %>"
+      xlink:href="#moveTarget" />
+  </a>
+<% end %>
