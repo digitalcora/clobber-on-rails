@@ -20,8 +20,16 @@ footer {
   border-top: 1px solid #ccc;
 }
 
-h2, p {
+h2, h3, p {
   margin-bottom: 8px;
+}
+
+#front h2, #front h3 {
+  margin-top: 8px;
+}
+
+#front p {
+  margin-bottom: 16px;
 }
 
 .flash {

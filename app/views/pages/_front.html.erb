@@ -1,10 +1,29 @@
-<p>Welcome! You are not signed in. To play,
-<%= link_to 'Sign In', signin_path, :class => 'inverse button blue' %>
-with an existing account or
-<%= link_to 'Sign Up', signup_path, :class => 'inverse button green' %>
-for a new account.</p>
+<div id="front">
 
-<div id="front_pane" class="pane">
-  <h2>Browser Support</h2>
-  <p>Clobber on Rails requires at least <b>Internet Explorer 9</b>, <b>Firefox 4.0</b>, <b>Chrome 8</b>, <b>Safari 6.0</b>, or <b>Opera 12.0</b>. Note that the latter two have not yet been released as of June 2011. In addition, JavaScript must be enabled.</p>
+  <p>Welcome! You are not signed in. To play,
+  <%= link_to 'Sign In', signin_path, :class => 'inverse button blue' %>
+  with an existing account or
+  <%= link_to 'Sign Up', signup_path, :class => 'inverse button green' %>
+  for a new account.</p>
+
+  <h2>What's this about?</h2>
+  <p>Clobber on Rails is an online browser-based version of <a href="http://en.wikipedia.org/wiki/Clobber">Clobber</a>, a simple two-player board game. This project was created for <a href="http://people.rit.edu/dsbics/">Dan Bogaard's</a> Web Client/Server Programming class at <a href="http://www.rit.edu/">RIT</a>: Any odd design decisions you notice (such as the game board being entirely SVG) are probably a consequence of the project requirements.</p>
+  <p><b><span style="color: red">WARNING:</span> This site is not officially supported in any way!</b> It is open to the public by virtue of being hosted on Heroku, but I reserve the right to take it down or wipe the database at any time and without warning.</p>
+
+  <div id="browser_pane" class="pane">
+    <h3>Browser Support</h3>
+    <p>Clobber on Rails requires at least <b>Internet Explorer 9</b>, <b>Firefox 4.0</b>, or <b>Chrome</b>. Safari and Opera <i>will not work</i>, due to their lack of support for <a href="http://caniuse.com/#svg-html5">inline SVG in HTML5</a> (at least in their current stable releases, as of June 2011).</p>
+  </div>
+  
+  <div id="issues_pane" class="pane">
+    <h3>Known Issues</h3>
+    <ul>
+      <li>Selecting a piece and moving a piece both cause the entire page to reload.</li>
+      <li>Both players are redirected to the Game Lobby immediately when a game ends, so if you lost, you can't actually see the move that finished you.</li>
+      <li>There is no in-game notification when your opponent goes offline (closes the browser tab, loses their internet connection, etc). However, if they come back to the site, and you haven't abandoned the game in the meantime, they will be sent back into the game and play can continue.</li>
+      <li>Changing your username requires you to re-enter and confirm your password.</li>
+      <li>There is no provision for resetting forgotten passwords.</li>
+    </ul>
+  </div>
+
 </div>
