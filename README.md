@@ -1,6 +1,6 @@
 Clobber on Rails
 ================
 
-Clobber on Rails is an online browser-based version of [Clobber](http://en.wikipedia.org/wiki/Clobber) (a simple two-player board game), written in [Ruby on Rails](http://rubyonrails.org/) for [Dan Bogaard's](http://people.rit.edu/dsbics/) Web Client/Server Programming class at [RIT](http://www.rit.edu/). See the [project page](http://grantovich.net/projects/clobber-on-rails/) on my personal web site.
+Clobber on Rails is a browser-based version of [Clobber](http://en.wikipedia.org/wiki/Clobber) with head-to-head online play, written in Rails for [Dan Bogaard's](http://people.rit.edu/dsbics/) Web Client/Server Programming class at [RIT](http://www.rit.edu/). See the [project page](http://grantovich.net/projects/clobber-on-rails/) on my personal web site.
 
-This code is currently live at [http://clobber-on-rails.heroku.com](http://clobber-on-rails.heroku.com), though I make no guarantees that it will remain there for any length of time.
+A live instance of this app was previously hosted on Heroku, which may still be referenced in the code. That site has since been taken down, and I do not maintain this project.
